@@ -4,6 +4,11 @@ import java.time.format.DateTimeFormatter;
 
 import java.time.LocalDate;
 
+import java.time.temporal.ChronoUnit;
+import java.time.Month;
+
+import static javax.print.attribute.Size2DSyntax.MM;
+
 import javax.swing.JOptionPane;
 
 public class PlanejadorDeViagem {
@@ -31,10 +36,12 @@ public class PlanejadorDeViagem {
 
         String data = JOptionPane.showInputDialog("Data Da Viagem");
 
-        LocalDate hoje = LocalDate.now();
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate converter = LocalDate.parse(data, formato);
+        LocalDate dataFutura = LocalDate.parse(data, formato);
+        LocalDate hoje = LocalDate.now();
+        long dias = ChronoUnit.DAYS.between(hoje, dataFutura);
 
         if (data.isBlank()) {
             JOptionPane.showMessageDialog(null, "Não Pode Estar Vazio.");
@@ -59,9 +66,11 @@ public class PlanejadorDeViagem {
         if (rico < 0) {
             JOptionPane.showMessageDialog(null, "Numero inválido( numero negativo).");
         }
+        
+        JOptionPane.showMessageDialog(null, "Nome: " +nome+ "\nData: "+data+ "\nDias: "+numero+ "\nValo Por Dia: "+rico);
 
         double resultado = numero * rico;
-        JOptionPane.showMessageDialog(null, "Nome: " + nome + "\n A Data É: " + data + "\nOs Dias São: " + numero +"\nO Valor É: " + rico+ "O Valor È: "+resultado);
+        JOptionPane.showMessageDialog(null, nome+ "Sua Viagem Será: "+data+ "\nFaltam: "+dias+ "\nO Custo Total É: "+resultado);
     }
     
 }
