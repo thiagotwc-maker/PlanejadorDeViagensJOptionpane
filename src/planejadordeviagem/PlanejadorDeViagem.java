@@ -5,9 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 
 import java.time.temporal.ChronoUnit;
-import java.time.Month;
-
-import static javax.print.attribute.Size2DSyntax.MM;
 
 import javax.swing.JOptionPane;
 
@@ -33,19 +30,25 @@ public class PlanejadorDeViagem {
         if (nome.isBlank()) {
             JOptionPane.showMessageDialog(null, "Não Pode Estar Vazio.");
         }
-
+        
+        
+        
         String data = JOptionPane.showInputDialog("Data Da Viagem");
-
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate converter = LocalDate.parse(data, formato);
         LocalDate dataFutura = LocalDate.parse(data, formato);
+        
         LocalDate hoje = LocalDate.now();
         long dias = ChronoUnit.DAYS.between(hoje, dataFutura);
+
+        JOptionPane.showMessageDialog(null, "Data Inválida: " + data);
 
         if (data.isBlank()) {
             JOptionPane.showMessageDialog(null, "Não Pode Estar Vazio.");
         }
+        
+        
 
         String dia = JOptionPane.showInputDialog("Quantidade De Dias.");
         int numero = Integer.parseInt(dia);
@@ -56,6 +59,7 @@ public class PlanejadorDeViagem {
         if (numero < 0) {
             JOptionPane.showMessageDialog(null, "Numero inválido( numero negativo).");
         }
+        
 
         String valor = JOptionPane.showInputDialog("Valor Gasto Por Dia.");
         double rico = Double.parseDouble(valor);
@@ -67,11 +71,10 @@ public class PlanejadorDeViagem {
             JOptionPane.showMessageDialog(null, "Numero inválido( numero negativo).");
         }
         
-        JOptionPane.showMessageDialog(null, "Nome: " +nome+ "\nData: "+data+ "\nDias: "+numero+ "\nValo Por Dia: "+rico);
+        
+        JOptionPane.showMessageDialog(null, "Nome: " + nome + "\nData: " + data + "\nDias: " + numero + "\nValo Por Dia: " + rico);
 
         double resultado = numero * rico;
-        JOptionPane.showMessageDialog(null, nome+ "Sua Viagem Será: "+data+ "\nFaltam: "+dias+ "\nO Custo Total É: "+resultado);
+        JOptionPane.showMessageDialog(null, nome + "Sua Viagem Será: " + data + "\nFaltam: " + dias + "\nO Custo Total É: " + resultado);
     }
-    
 }
-
