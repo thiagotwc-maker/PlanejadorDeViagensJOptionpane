@@ -31,8 +31,8 @@ public class PlanejadorDeViagem {
         long dias = 0;
         String data = null;
         String nome = null;
-        int numero = 0;
-        double rico = 0;
+        int dia = 0;
+        double money = 0;
 
         // aqui recebe o nome do usuario.
         nome = JOptionPane.showInputDialog("Nome e Sobrenome");
@@ -57,33 +57,49 @@ public class PlanejadorDeViagem {
         if (data.isBlank()) {
             JOptionPane.showMessageDialog(null, "Não Pode Estar Vazio.");
         }
+        
+        
+        
+        
 
+        String mes = JOptionPane.showInputDialog("Digite Quantos Dias Vai Viajar.");
+        if(mes == null || mes.trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Campo Vazio! ");    
+        }else{
+            dia = Integer.parseInt(mes.trim());
+        }
         // Aqui pega a quantidade de dias que o usuario vai digitar.
-        String dia = JOptionPane.showInputDialog("Quantidade De Dias.");
-        numero = Integer.parseInt(dia);
-
-        if (dia.isBlank()) {
-            JOptionPane.showMessageDialog(null, "Não Pode Estar Vazio.");
+        //Sring dia = JOptionPane.showInputDialog("Quantidade De Dias.");
+        //numero = Integer.parseInt(dia);
+        
+        
+        
+        
+        String valor = JOptionPane.showInputDialog("Digite O Valor Que Pretende Gastar.");
+        if(valor == null || valor.trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Campo Vazio! ");    
+        }else{
+            money = Double.parseDouble(valor.trim());
         }
-        if (numero < 0) {
-            JOptionPane.showMessageDialog(null, "Numero inválido( numero negativo).");
-        }
-
+        
         // Aqui vai receber o valor que o usuario pretende gastar na viagem.
-        String valor = JOptionPane.showInputDialog("Valor Gasto Por Dia.");
-        rico = Double.parseDouble(valor);
-
-        if (valor.isBlank()) {
-            JOptionPane.showMessageDialog(null, "Não Pode Estar Vazio.");
-        }
-        if (rico < 0) {
-            JOptionPane.showMessageDialog(null, "Numero inválido( numero negativo).");
-        }
+//        String valor = JOptionPane.showInputDialog("Valor Gasto Por Dia.");
+//        rico = Double.parseDouble(valor);
+//
+//        if (valor.isBlank()) {
+//            JOptionPane.showMessageDialog(null, "Não Pode Estar Vazio.");
+//        }
+//        if (rico < 0) {
+//            JOptionPane.showMessageDialog(null, "Numero inválido( numero negativo).");
+//        }
 
         //Aqui exibe todos os dados coletados anteriormente.
-        JOptionPane.showMessageDialog(null, "Nome: " + nome + "\nData: " + data + "\nDias: " + numero + "\nValo Por Dia: " + rico);
+        
+        
+        
+        double resultado = dia * money;
+        JOptionPane.showMessageDialog(null, "Nome: " + nome + "\nData: " + data + "\nDias: " + dia + "\nValo Por Dia: " +money );
 
-        double resultado = numero * rico;
         JOptionPane.showMessageDialog(null, nome + "  Sua Viagem Será: " + data + "\nFaltam: " + dias + "\nO Custo Total É: " + resultado);
     }
 }
