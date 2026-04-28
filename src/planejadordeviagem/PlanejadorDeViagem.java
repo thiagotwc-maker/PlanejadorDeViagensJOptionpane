@@ -44,9 +44,16 @@ public class PlanejadorDeViagem {
         data = JOptionPane.showInputDialog("Data Da Viagem");
         try {
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate converter = LocalDate.parse(data, formato);
+            
             LocalDate dataFutura = LocalDate.parse(data, formato);
             LocalDate hoje = LocalDate.now();
+            if(dataFutura.isAfter(hoje)){
+                JOptionPane.showMessageDialog(null, "A Data é Passada.");  
+            }else if(dataFutura.equals(hoje)){
+                JOptionPane.showMessageDialog(null, "A Viagem é Hoje.");   
+            }else{
+                JOptionPane.showMessageDialog(null, "Faltem" +dias+ "Dias");
+            }
 
             dias = ChronoUnit.DAYS.between(hoje, dataFutura);
 
@@ -58,19 +65,26 @@ public class PlanejadorDeViagem {
             JOptionPane.showMessageDialog(null, "Não Pode Estar Vazio.");
         }
         
-        
-        
-        
+ 
 
+        
+        
         String mes = JOptionPane.showInputDialog("Digite Quantos Dias Vai Viajar.");
         if(mes == null || mes.trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "Campo Vazio! ");    
         }else{
             dia = Integer.parseInt(mes.trim());
         }
+        if(dia < 0){
+            JOptionPane.showMessageDialog(null, "Não Pode Ter Dias Negativos!!!");
+        }
+                
         // Aqui pega a quantidade de dias que o usuario vai digitar.
         //Sring dia = JOptionPane.showInputDialog("Quantidade De Dias.");
         //numero = Integer.parseInt(dia);
+        
+        
+  
         
         
         
@@ -81,6 +95,10 @@ public class PlanejadorDeViagem {
         }else{
             money = Double.parseDouble(valor.trim());
         }
+        if(money < 0){           
+            JOptionPane.showMessageDialog(null, "Não Pode Ter Válor Negativo!!! ");
+        }
+       
         
         // Aqui vai receber o valor que o usuario pretende gastar na viagem.
 //        String valor = JOptionPane.showInputDialog("Valor Gasto Por Dia.");
