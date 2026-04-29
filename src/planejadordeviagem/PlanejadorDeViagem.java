@@ -48,11 +48,11 @@ public class PlanejadorDeViagem {
             LocalDate dataFutura = LocalDate.parse(data, formato);
             LocalDate hoje = LocalDate.now();
             if(dataFutura.isAfter(hoje)){
-                JOptionPane.showMessageDialog(null, "A Data é Passada.");  
+                JOptionPane.showMessageDialog(null, "A Viagem é Futura.");  
             }else if(dataFutura.equals(hoje)){
                 JOptionPane.showMessageDialog(null, "A Viagem é Hoje.");   
             }else{
-                JOptionPane.showMessageDialog(null, "Faltem" +dias+ "Dias");
+                JOptionPane.showMessageDialog(null, "A Data Dessa Viagem Já Passou.");
             }
 
             dias = ChronoUnit.DAYS.between(hoje, dataFutura);
